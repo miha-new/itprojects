@@ -1,0 +1,113 @@
+[class*=" icon-"],
+[class^=icon-] {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background-color: $dark;
+  border: 1px solid $dark;
+  border-radius: .25rem;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+  }
+}
+
+.icon-add {
+  &::before,
+  &::after {
+    top: calc(50% - 5px);
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 10px;
+    background-color: $white;
+  }
+  &::after {
+    transform: rotate(-90deg);
+  }
+}
+
+.icon-clear,
+.icon-delete,
+.icon-delete-large {
+  &::before,
+  &::after {
+    background-color: $white;
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.icon-clear,
+.icon-delete {
+  &::before,
+  &::after {
+    top: calc(50% - 6px);
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 12px;
+  }
+}
+
+.icon-delete-large {
+  width: 30px;
+  height: 30px;
+  &::before,
+  &::after {
+    top: calc(50% - 9px);
+    left: calc(50% - 2px);
+    width: 4px;
+    height: 18px;
+  }
+}
+
+.icon-right {
+  &::before {
+    top: calc(50% - 4px);
+    right: calc(50% - 2px);
+    width: 7px;
+    height: 7px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: $white;
+  }
+  &::before {
+    transform: rotate(-45deg);
+  }
+}
+
+.icon-left {
+  &::before {
+    top: calc(50% - 4px);
+    left: calc(50% - 2px);
+    width: 7px;
+    height: 7px;
+    border-width: 2px 0 0 2px;
+    border-style: solid;
+    border-color: $white;
+  }
+  &::before {
+    transform: rotate(-45deg);
+  }
+}
+
+.icon-checked {
+  &::before {
+    top: calc(50% - 4px);
+    right: calc(50% - 5px);
+    width: 9px;
+    height: 5px;
+    border-width: 0 0 2px 2px;
+    border-style: solid;
+    border-color: $white;
+  }
+  &::before {
+    transform: rotate(-45deg);
+  }
+}

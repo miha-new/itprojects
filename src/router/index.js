@@ -1,22 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../pages/Home.vue'
+import Note from '../pages/Note.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/create',
+    name: 'create',
+    component: Note
+  },
+  {
+    path: '/edit/:id',
+    name: 'edit',
+    component: Note,
+    props: true
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ]
 
@@ -24,6 +32,15 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const toPage = to.name
+  const fromPage = sessionStorage.getItem('page')
+  const refreshBrowser = toPage == fromPage
+  sessionStorage.setItem('page',toPage)
+  sessionStorage.setItem('refreshBrowser',refreshBrowser)
+  next()
 })
 
 export default router

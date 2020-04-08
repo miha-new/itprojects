@@ -1,0 +1,102 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  font-weight: 400;
+  color: $secondary;
+  justify-content: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: transparent;
+  user-select: none;
+  border: none;
+  padding: 0;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  &:focus {
+    outline: 0;
+  }
+  span {
+    position: relative;
+  }
+}
+
+@mixin btn($color) {
+  [class*=" icon-"],
+  [class^=icon-] {
+    background-color: $color;
+    border-color: darken($color,5%);
+    transition: $time ease-in-out;
+    transition-property: background-color, opacity;
+    &:not(:first-child) {
+      margin-left: .25rem;
+    }
+    &:not(:last-child) {
+      margin-right: .25rem;
+    }
+  }
+  &:focus,
+  &:hover {
+    [class*=" icon-"],
+    [class^=icon-] {
+      background-color: darken($color,5%);
+    }
+  }
+  &:disabled {
+    opacity: .4;
+    pointer-events: none;
+  }
+}
+
+@mixin btn-rect($color) {
+  color: $white;
+  background-color: $color;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: .5rem 1.25rem;
+  border: 1px solid darken($color,5%);
+  border-radius: .5rem;
+  transition: $time ease-in-out;
+  transition-property: background-color, opacity;
+  &:focus,
+  &:hover {
+    background-color: darken($color,5%);
+  }
+  &:disabled {
+    opacity: .4;
+    pointer-events: none;
+  }
+}
+
+.btn-add {
+  @include btn($success);
+}
+
+.btn-delete {
+  @include btn($danger);
+}
+
+.btn-back {
+  @include btn($info);
+}
+
+.btn-prev,
+.btn-next {
+  @include btn($warning);
+}
+
+.btn-clear {
+  @include btn($danger);
+}
+
+.btn-primary {
+  @include btn-rect($primary);
+}
+
+.btn-success {
+  @include btn-rect($success);
+}
+
+.btn-danger {
+  @include btn-rect($danger);
+}
