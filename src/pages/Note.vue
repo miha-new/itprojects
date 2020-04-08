@@ -293,7 +293,7 @@
           } else {
             this.editNote(note)
           }
-          this.clearNote()
+          this.setNote()
           this.$router.push('/')
         }
       },
