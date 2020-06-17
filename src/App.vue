@@ -1,18 +1,20 @@
 <template lang="pug">
   #app
+    //- router-view - точка в которой будет отображён компонент страницы
     router-view
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import {mapActions} from 'vuex'
 
   export default {
     created() {
-      this.getNotes()
+      // Инициализируем данные заметок
+      this.initNotes()
     },
     methods: {
-      ...mapActions('notes', {
-        getNotes: 'getNotes'
+      ...mapActions({
+        initNotes: 'initNotes'
       })
     }
   }

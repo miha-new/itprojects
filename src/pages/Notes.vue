@@ -1,27 +1,29 @@
 <template lang="pug">
   .page-home
     .container
-      .wrap
+      .section
         router-link.btn.btn-success(
           to="/create"
         ) Создать заметку
-      .wrap(
+      //- Если есть заметки
+      .section(
         v-if="notes.length"
       )
         card-note(
           v-for="note in notes"
           :key="note.id"
-          :note="note"
+          :value="note"
         )
-      .wrap(
+      //- Если нет заметок
+      .section(
         v-else
       )
         .card
-          .title Заметок не найдено
+          .text Заметок не найдено
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import {mapState} from 'vuex'
   import CardNote from '@/components/CardNote'
 
   export default {
@@ -29,7 +31,7 @@
       CardNote
     },
     computed: {
-      ...mapState('notes',{
+      ...mapState({
         notes: state => state.notes
       })
     }
@@ -47,7 +49,7 @@
       &:first-child {
         margin-top: 0;
       }
-      .title {
+      .text {
         font-size: 1.5rem;
         line-height: 1.5;
         font-weight: 500;

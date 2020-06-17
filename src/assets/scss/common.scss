@@ -27,6 +27,12 @@ body {
   background-color: $light; 
 }
 
+input {
+  &:focus {
+    outline: 0;
+  }
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -39,7 +45,7 @@ body {
   padding-left: .75rem;
 }
 
-.wrap {
+.section {
   display: flex;
   flex-wrap: wrap;
   padding-top: .75rem;

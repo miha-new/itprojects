@@ -1,21 +1,21 @@
 <template lang="pug">
   .confirm-mask(
-    v-if="show"
+    v-if="value"
   )
     .confirm-box
-      .confirm-text {{ text }}
+      .confirm-text {{text}}
       button.btn.btn-danger(
-        @click="confirm(true)"
+        @click="accept(true)"
       ) Да
       button.btn.btn-primary(
-        @click="confirm(false)"
+        @click="accept(false)"
       ) Нет
 </template>
 
 <script>
 export default {
   props: {
-    show: {
+    value: {
       type: Boolean,
       required: true
     },
@@ -25,8 +25,10 @@ export default {
     }
   },
   methods: {
-    confirm(value) {
-      this.$emit('confirm',value)
+    // Закрывает и отправляет ответ
+    accept(value) {
+      this.$emit('input', false)
+      this.$emit('accept', value)
     }
   }
 }

@@ -27,19 +27,20 @@
     background-color: $color;
     border-color: darken($color,5%);
     transition: $time ease-in-out;
-    transition-property: background-color, opacity;
+    transition-property: background-color, border-color, opacity;
     &:not(:first-child) {
-      margin-left: .25rem;
+      margin-left: .5rem;
     }
     &:not(:last-child) {
-      margin-right: .25rem;
+      margin-right: .5rem;
     }
   }
   &:focus,
   &:hover {
     [class*=" icon-"],
     [class^=icon-] {
-      background-color: darken($color,5%);
+      border-color: darken($color,10%);
+      background-color: darken($color,10%);
     }
   }
   &:disabled {
@@ -57,10 +58,11 @@
   border: 1px solid darken($color,5%);
   border-radius: .5rem;
   transition: $time ease-in-out;
-  transition-property: background-color, opacity;
+  transition-property: background-color, border-color, opacity;
   &:focus,
   &:hover {
-    background-color: darken($color,5%);
+    border-color: darken($color,10%);
+    background-color: darken($color,10%);
   }
   &:disabled {
     opacity: .4;
@@ -83,10 +85,6 @@
 .btn-prev,
 .btn-next {
   @include btn($warning);
-}
-
-.btn-clear {
-  @include btn($danger);
 }
 
 .btn-primary {

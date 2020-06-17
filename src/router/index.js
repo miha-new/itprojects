@@ -1,15 +1,18 @@
+// Инициализируем маршрутизатор
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../pages/Home.vue'
-import Note from '../pages/Note.vue'
+
+import Notes from '../pages/Notes.vue' // Страница со списком заметок
+import Note from '../pages/Note.vue' // Страница создания/редактирования заметки
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'notes',
+    component: Notes
   },
   {
     path: '/create',
@@ -31,16 +34,15 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  // Поведение скролла при переходах как в браузере
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
   routes
-})
-
-router.beforeEach((to, from, next) => {
-  const toPage = to.name
-  const fromPage = sessionStorage.getItem('page')
-  const refreshBrowser = toPage == fromPage
-  sessionStorage.setItem('page',toPage)
-  sessionStorage.setItem('refreshBrowser',refreshBrowser)
-  next()
 })
 
 export default router
