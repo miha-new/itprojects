@@ -186,7 +186,9 @@
       isValidForm() {
         const note = this.history[this.current]
         const isValidTitle = !!note.title
-        const isValidTodos = note.todos.every(todo => !!todo.text)
+        const isValidTodos = note.todos.every((todo, i) => {
+          return this.isSame(todo, this.note.todos[i])
+        })
         return isValidTitle && isValidTodos
       },
       // Сохранить заметку
